@@ -50,8 +50,8 @@ app.put("/edit", async (req, res) => {
     const id = req.body.id;
     const new_text = req.body.text;
     const edited_task = await db.query(
-      "UPDATE users_permalist SET task = $1 WHERE id = $2",
-      [new_text, id]
+      "UPDATE users_permalist SET task = $1 WHERE task = $2",
+      [new_text, new_task]
     );
     res.status(200).send("Task updated successfully");
   } catch (error) {
