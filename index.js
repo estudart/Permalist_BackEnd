@@ -47,11 +47,11 @@ app.get("/", async (req, res) => {
 
 app.put("/edit", async (req, res) => {
   try {
-    const id = req.body.id;
+    const task = req.body.task;
     const new_text = req.body.text;
     const edited_task = await db.query(
       "UPDATE users_permalist SET task = $1 WHERE task = $2",
-      [new_text, new_task]
+      [new_text, task]
     );
     res.status(200).send("Task updated successfully");
   } catch (error) {
